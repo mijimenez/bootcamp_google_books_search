@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import DeleteBtn from "../../components/DeleteBtn";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import CardBody from "../../components/CardBody";
 import Card from "../../components/Card";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 
 function Search() {
-  // // Setting our component's initial state
+  // Setting our component's initial state
   // const [books, setBooks] = useState([])
   // const [formObject, setFormObject] = useState({
   //   title: "",
-  //   author: "",
-  //   synopsis: ""
+  //   authors: "",
+  //   description: "",
+  //   image: "",
+  //   link: ""
   // })
 
-  // // Load all books and store them with setBooks
+  // Load all books and store them with setBooks
   // useEffect(() => {
   //   loadBooks()
   // }, [])
 
-  // // Loads all books and sets them to books
+  // Loads all books and sets them to books
   // function loadBooks() {
   //   API.getBooks()
   //     .then(res => 
@@ -30,21 +33,21 @@ function Search() {
   //     .catch(err => console.log(err));
   // };
 
-  // // Deletes a book from the database with a given id, then reloads books from the db
+  // Deletes a book from the database with a given id, then reloads books from the db
   // function deleteBook(id) {
   //   API.deleteBook(id)
   //     .then(res => loadBooks())
   //     .catch(err => console.log(err));
   // }
 
-  // // Handles updating component state when the user types into the input field
+  // Handles updating component state when the user types into the input field
   // function handleInputChange(event) {
   //   const { name, value } = event.target;
   //   setFormObject({...formObject, [name]: value})
   // };
 
-  // // When the form is submitted, use the API.saveBook method to save the book data
-  // // Then reload books from the database
+  // When the form is submitted, use the API.saveBook method to save the book data
+  // Then reload books from the database
   // function handleFormSubmit(event) {
   //   event.preventDefault();
   //   if (formObject.title && formObject.author) {
@@ -66,7 +69,7 @@ function Search() {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <Col size="md-12">
             <Jumbotron>
               <h1>(React) Google Books Search</h1>
             </Jumbotron>
@@ -75,19 +78,21 @@ function Search() {
               />
               <FormBtn
               >
-                Submit Book
+                Search
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Results</h1>
-            </Jumbotron>
-              <List>
-                    <ListItem>
-                      <Card />
-                    </ListItem>
-              </List>
+          <Col size="md-12">
+            <Card>
+              <h2>Results</h2>
+                <List>
+                      <ListItem>
+                        <Card>
+                          <CardBody />
+                        </Card>
+                      </ListItem>
+                </List>
+            </Card>
           </Col>
         </Row>
       </Container>
