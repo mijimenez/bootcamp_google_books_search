@@ -10,28 +10,30 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 
 function Search() {
   // Setting our component's initial state
-  // const [books, setBooks] = useState([])
-  // const [formObject, setFormObject] = useState({
-  //   title: "",
-  //   authors: "",
-  //   description: "",
-  //   image: "",
-  //   link: ""
-  // })
+  const [books, setBooks] = useState([])
+  const [formObject, setFormObject] = useState({
+    title: "",
+    authors: "",
+    description: "",
+    image: "",
+    link: ""
+  })
 
   // Load all books and store them with setBooks
-  // useEffect(() => {
-  //   loadBooks()
-  // }, [])
+  useEffect(() => {
+    loadBooks()
+  }, [])
 
   // Loads all books and sets them to books
-  // function loadBooks() {
-  //   API.getBooks()
-  //     .then(res => 
-  //       setBooks(res.data)
-  //     )
-  //     .catch(err => console.log(err));
-  // };
+  function loadBooks() {
+    API.getBookResultsByTitle()
+      .then(res => {
+        // console.log(res);
+        setBooks(res)
+        }
+      )
+      .catch(err => console.log(err));
+  };
 
   // Deletes a book from the database with a given id, then reloads books from the db
   // function deleteBook(id) {
@@ -85,13 +87,29 @@ function Search() {
           <Col size="md-12">
             <Card>
               <h2>Results</h2>
-                <List>
-                      <ListItem>
-                        <Card>
-                          <CardBody />
-                        </Card>
-                      </ListItem>
-                </List>
+
+
+              {books.length >0? (
+              <List>
+                {books.map(book => (
+                  <ListItem>
+                      <Card>
+                        <CardBody
+                          key={book.id}
+                          title={book.title}
+                          author={book.author}
+                          image={book.image}
+                          link={book.link}
+                        />
+                      </Card>
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+              <h3>No Results to Display</h3>
+            )}
+
+
             </Card>
           </Col>
         </Row>

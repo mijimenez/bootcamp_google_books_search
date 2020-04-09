@@ -1,16 +1,15 @@
 import React from "react";
 import "./style.css";
 
-function CardBody() {
+function CardBody(props) {
+  // console.log(props);
   return (
-    <div>
-      <h2>Title</h2>
-      <h3>Author</h3>
-      <div>
-          <img className="card-img" src="" alt="book thumbnail" />
+    <div key={props.id}>
+          <h2>{props.title}</h2>
+          <h2>{props.author}</h2>
+            { props.image ? (<div><img className="card-img" src={props.image} alt="book thumbnail" /></div>) : "" }
+          <a>{props.link}</a>
       </div>
-      <p>Lorem ipsum</p>
-    </div>
   );
 }
 
