@@ -4,6 +4,7 @@ import DeleteBtn from "../../components/DeleteBtn";
 // import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import Card from "../../components/Card";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 
 function Search() {
@@ -84,7 +85,7 @@ function Search() {
             </Jumbotron>
               <List>
                     <ListItem>
-                      <DeleteBtn />
+                      <Card />
                     </ListItem>
               </List>
           </Col>
