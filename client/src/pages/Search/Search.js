@@ -97,9 +97,10 @@ function Search() {
                         <CardBody
                           key={book.id}
                           title={book.title}
-                          author={book.author}
+                          authors={book.authors}
                           image={book.image}
                           link={book.link}
+                          description={book.description}
                         />
                       </Card>
                   </ListItem>

@@ -6,9 +6,14 @@ function CardBody(props) {
   return (
     <div key={props.id}>
           <h2>{props.title}</h2>
-          <h2>{props.author}</h2>
-            { props.image ? (<div><img className="card-img" src={props.image} alt="book thumbnail" /></div>) : "" }
-          <a>{props.link}</a>
+
+          { props.authors ? (<h3>{props.authors}</h3>) : ""}
+
+          { props.image ? (<div><img className="card-img" src={props.image} alt="book thumbnail" /></div>) : "" }
+
+          <a href={props.link} target="_blank">View On Google Books</a>
+
+          { props.description ? (<p>{props.description}</p>) : ""}
       </div>
   );
 }
