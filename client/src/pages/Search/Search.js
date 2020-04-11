@@ -13,13 +13,6 @@ function Search() {
   const [books, setBooks] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
 
-  // Load all books and store them with setBooks
-  // useEffect(() => {
-  //   if (searchTerm) {
-  //     loadBooks();
-  //   }
-  // }, [searchTerm])
-
   // Loads all books and sets them to books
   function loadBooks() {
     API.getBookResultsByTitle(searchTerm)

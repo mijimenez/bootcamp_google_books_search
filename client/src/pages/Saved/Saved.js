@@ -10,22 +10,24 @@ import DeleteBtn from "../../components/DeleteBtn"
 function Search() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
-  const [formObject, setFormObject] = useState("")
-  const [savedObject, setSavedObject] = useState({})
 
-  // Load all books and store them with setBooks
-  // useEffect(() => {
-  //   if (formObject) {
-  //     loadBooks();
-  //   }
-  // }, [formObject])
+  // Load all books from database
+  useEffect(() => {
+    API.getBooks()
+    .then(res => 
+        setBooks(res.data)
+      )
+      .catch(err => console.log(err));
+  }, [])
 
   // Deletes a book from the database with a given id, then reloads books from the db
-//   function handleDeleteSubmit(id) {
-//     API.deleteBook(id)
-//       .then(res => loadBooks())
-//       .catch(err => console.log(err));
-//   }
+  function handleDeleteSubmit(id) {
+    API.deleteBook(id)
+    // Filter to return true - if the current book id doesn't include the id that we're deleting, we're going to keep it)
+    setBooks(books.filter((book) => {
+        return book._id != id;
+    }))
+  }
 
     return (
       <Container fluid>
@@ -52,7 +54,8 @@ function Search() {
                           link={book.link}
                         />
                         <DeleteBtn
-                        //   onClick={() => handleDeleteSubmit()}
+                          handleDeleteSubmit={handleDeleteSubmit}
+                          id={book._id}
                         />
                       </Card>
                   </ListItem>
