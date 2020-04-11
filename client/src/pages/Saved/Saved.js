@@ -5,8 +5,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import CardBody from "../../components/CardBody";
 import Card from "../../components/Card";
-import { Input, FormBtn } from "../../components/Form";
-import SaveBtn from "../../components/SaveBtn"
+import DeleteBtn from "../../components/DeleteBtn"
 
 function Search() {
   // Setting our component's initial state
@@ -33,11 +32,11 @@ function Search() {
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
-  // function deleteBook(id) {
-  //   API.deleteBook(id)
-  //     .then(res => loadBooks())
-  //     .catch(err => console.log(err));
-  // }
+  function handleDeleteSubmit(id) {
+    API.deleteBook(id)
+      .then(res => loadBooks())
+      .catch(err => console.log(err));
+  }
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -57,19 +56,6 @@ function Search() {
     }
   };
 
-  function handleSaveSubmit(formObject) {
-    API.saveBook({
-      key : formObject.id,
-      title: formObject.title,
-      authors: formObject.authors,
-      image: formObject.image,
-      description: formObject.description,
-      link: formObject.link
-    })
-      // .then(res => setSavedObject())
-      // .catch(err => console.log(err));
-  };
-
     return (
       <Container fluid>
         <Row>
@@ -77,19 +63,6 @@ function Search() {
             <Jumbotron>
               <h1>(React) Google Books Search</h1>
             </Jumbotron>
-            <form>
-              <Input
-                onChange={handleInputChange}
-                name="title"
-                placeholder='ex. "Harry Potter"'
-              />
-              <FormBtn
-                // disabled={!(formObject.title)}
-                onClick={handleFormSubmit}
-              >
-                Search
-              </FormBtn>
-            </form>
           </Col>
           <Col size="md-12">
             <Card>
@@ -107,8 +80,8 @@ function Search() {
                           description={book.description}
                           link={book.link}
                         />
-                        <SaveBtn
-                          onClick={() => handleSaveSubmit(formObject)}
+                        <DeleteBtn
+                          onClick={() => handleDeleteSubmit()}
                         />
                       </Card>
                   </ListItem>
