@@ -6,27 +6,23 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import CardBody from "../../components/CardBody";
 import Card from "../../components/Card";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 
 function Search() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
-  const [formObject, setFormObject] = useState({
-    title: "",
-    authors: "",
-    description: "",
-    image: "",
-    link: ""
-  })
+  const [formObject, setFormObject] = useState("")
 
   // Load all books and store them with setBooks
-  useEffect(() => {
-    loadBooks()
-  }, [])
+  // useEffect(() => {
+  //   if (formObject) {
+  //     loadBooks();
+  //   }
+  // }, [formObject])
 
   // Loads all books and sets them to books
   function loadBooks() {
-    API.getBookResultsByTitle()
+    API.getBookResultsByTitle(formObject)
       .then(res => {
         // console.log(res);
         setBooks(res)
@@ -43,30 +39,22 @@ function Search() {
   // }
 
   // Handles updating component state when the user types into the input field
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   setFormObject({...formObject, [name]: value})
-  // };
+  function handleInputChange(event) {
+    const { value } = event.target;
+    console.log(value);
+    setFormObject(value)
+  };
 
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   if (formObject.title && formObject.author) {
-  //     API.saveBook({
-  //       title: formObject.title,
-  //       author: formObject.author,
-  //       synopsis: formObject.synopsis
-  //     })
-  //       .then(() => setFormObject({
-  //         title: "",
-  //         author: "",
-  //         synopsis: ""
-  //       }))
-  //       .then(() => loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    if (formObject) {
+      loadBooks();
+        // .then(res => setBooks(res))
+        // .catch(err => console.log(err));
+    }
+  };
 
     return (
       <Container fluid>
@@ -77,8 +65,13 @@ function Search() {
             </Jumbotron>
             <form>
               <Input
+                onChange={handleInputChange}
+                name="title"
+                placeholder='ex. "Harry Potter"'
               />
               <FormBtn
+                // disabled={!(formObject.title)}
+                onClick={handleFormSubmit}
               >
                 Search
               </FormBtn>
@@ -92,7 +85,7 @@ function Search() {
               {books.length >0? (
               <List>
                 {books.map(book => (
-                  <ListItem>
+                  <ListItem key={book.id}>
                       <Card>
                         <CardBody
                           key={book.id}
