@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Jumbotron from "../../components/Jumbotron";
-import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import CardBody from "../../components/CardBody";
 import Card from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
-import ViewBtn from "../../components/ViewBtn/ViewBtn";
-import SaveBtn from "../../components/SaveBtn";
 
 function Search() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState("")
+  const [savedObject, setSavedObject] = useState({})
 
   // Load all books and store them with setBooks
   // useEffect(() => {
@@ -58,6 +56,19 @@ function Search() {
     }
   };
 
+  function handleSaveSubmit(formObject) {
+    API.saveBook({
+      key : formObject.id,
+      title: formObject.title,
+      authors: formObject.authors,
+      image: formObject.image,
+      description: formObject.description,
+      link: formObject.link
+    })
+      // .then(res => setSavedObject())
+      // .catch(err => console.log(err));
+  };
+
     return (
       <Container fluid>
         <Row>
@@ -93,11 +104,9 @@ function Search() {
                           authors={book.authors}
                           image={book.image}
                           description={book.description}
-                        />
-                        <ViewBtn 
                           link={book.link}
+                          onClick={() => handleSaveSubmit(formObject)}
                         />
-                        <SaveBtn />
                       </Card>
                   </ListItem>
                 ))}
