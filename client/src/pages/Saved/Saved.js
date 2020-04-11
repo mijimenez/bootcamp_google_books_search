@@ -20,41 +20,12 @@ function Search() {
   //   }
   // }, [formObject])
 
-  // Loads all books and sets them to books
-  function loadBooks() {
-    API.getBookResultsByTitle(formObject)
-      .then(res => {
-        // console.log(res);
-        setBooks(res)
-        }
-      )
-      .catch(err => console.log(err));
-  };
-
   // Deletes a book from the database with a given id, then reloads books from the db
-  function handleDeleteSubmit(id) {
-    API.deleteBook(id)
-      .then(res => loadBooks())
-      .catch(err => console.log(err));
-  }
-
-  // Handles updating component state when the user types into the input field
-  function handleInputChange(event) {
-    const { value } = event.target;
-    console.log(value);
-    setFormObject(value)
-  };
-
-  // When the form is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formObject) {
-      loadBooks();
-        // .then(res => setBooks(res))
-        // .catch(err => console.log(err));
-    }
-  };
+//   function handleDeleteSubmit(id) {
+//     API.deleteBook(id)
+//       .then(res => loadBooks())
+//       .catch(err => console.log(err));
+//   }
 
     return (
       <Container fluid>
@@ -81,7 +52,7 @@ function Search() {
                           link={book.link}
                         />
                         <DeleteBtn
-                          onClick={() => handleDeleteSubmit()}
+                        //   onClick={() => handleDeleteSubmit()}
                         />
                       </Card>
                   </ListItem>
