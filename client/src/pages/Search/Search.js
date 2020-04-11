@@ -7,6 +7,8 @@ import { List, ListItem } from "../../components/List";
 import CardBody from "../../components/CardBody";
 import Card from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
+import ViewBtn from "../../components/ViewBtn/ViewBtn";
+import SaveBtn from "../../components/SaveBtn";
 
 function Search() {
   // Setting our component's initial state
@@ -80,8 +82,6 @@ function Search() {
           <Col size="md-12">
             <Card>
               <h2>Results</h2>
-
-
               {books.length >0? (
               <List>
                 {books.map(book => (
@@ -92,9 +92,12 @@ function Search() {
                           title={book.title}
                           authors={book.authors}
                           image={book.image}
-                          link={book.link}
                           description={book.description}
                         />
+                        <ViewBtn 
+                          link={book.link}
+                        />
+                        <SaveBtn />
                       </Card>
                   </ListItem>
                 ))}
@@ -102,8 +105,6 @@ function Search() {
             ) : (
               <h3>No Results to Display</h3>
             )}
-
-
             </Card>
           </Col>
         </Row>

@@ -11,8 +11,6 @@ function CardBody(props) {
 
           { props.image ? (<div><img className="card-img" src={props.image} alt="book thumbnail" /></div>) : "" }
 
-          <a href={props.link} target="_blank">View On Google Books</a>
-
           { props.description ? (<p>{props.description}</p>) : ""}
       </div>
   );
