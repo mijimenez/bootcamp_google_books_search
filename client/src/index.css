@@ -38,6 +38,18 @@ body {
   color: #454545;
 }
 
+.save-btn {
+  padding: .45em 1em;
+}
+
 .display-message {
   color: #bbbbbb;
 }
+
+@media (max-width: 400px) {
+  .view-btn, .save-btn, .delete-btn {
+    width: 100%;
+    margin: 0 0 1em 0 !important;
+  }
+}
+
