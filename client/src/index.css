@@ -18,7 +18,9 @@ body {
 }
 
 .jumbotron {
-  background-color: #FFC107;
+  /* background-color: #FFC107; */
+  /* background: #FFC107 no-repeat top center / cover; */
+  background: #FFC107 url("/assets/images/hero-image.jpg") no-repeat fixed center / cover;
 }
 
 .btn-success {

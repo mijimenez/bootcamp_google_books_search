@@ -16,6 +16,10 @@
   margin: 0;
 }
 
+.image {
+  margin-bottom: 2em;
+}
+
 @media (min-width: 400px) {
   .image-description {
     display: flex;
