@@ -8,7 +8,7 @@ A MERN-based Google Books Search application that allows a user to view informat
 ![Desktop](client/public/assets/images/demo.gif)
 
 ## Live Link
-Launch the application [here](---)
+Launch the application [here](https://jimenez-google-books-search.herokuapp.com/)
 
 ## Technologies Used
 - HTML5
