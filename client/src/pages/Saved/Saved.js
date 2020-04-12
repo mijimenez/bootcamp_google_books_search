@@ -6,6 +6,7 @@ import { List, ListItem } from "../../components/List";
 import CardBody from "../../components/CardBody";
 import Card from "../../components/Card";
 import DeleteBtn from "../../components/DeleteBtn"
+import ViewBtn from "../../components/ViewBtn"
 
 function Search() {
   // Setting our component's initial state
@@ -32,37 +33,40 @@ function Search() {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-12">
+          <div className="hero">
             <Jumbotron>
-              <h1>(React) Google Books Search</h1>
+              <h1>React Google Books Search</h1>
+              <h5>Search For and Save Books of Interest</h5>
             </Jumbotron>
-          </Col>
+          </div>
           <Col size="md-12">
             <Card>
-              <h2>Results</h2>
+              <h4 className="text-center">Saved Books</h4>
               {books.length >0? (
-              <List>
+              <List> 
                 {books.map(book => (
                   <ListItem key={book.id}>
                       <Card>
+                      <DeleteBtn
+                          handleDeleteSubmit={handleDeleteSubmit}
+                          id={book._id}
+                        />
+                        <ViewBtn
+                          link={book.link}
+                        />
                         <CardBody
                           key={book.id}
                           title={book.title}
                           authors={book.authors}
                           image={book.image}
                           description={book.description}
-                          link={book.link}
-                        />
-                        <DeleteBtn
-                          handleDeleteSubmit={handleDeleteSubmit}
-                          id={book._id}
                         />
                       </Card>
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <p className="display-message text-center mt-5">Nothing Saved Yet</p>
             )}
             </Card>
           </Col>

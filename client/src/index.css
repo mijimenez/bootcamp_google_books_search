@@ -1,5 +1,43 @@
+h1, h2, h3, h4, h5, h6, p {
+ color: #454545;
+}
+
+h1, h2, h3, h4, h6 {
+  font-weight: bold;
+ }
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #f9f9f9;
+}
+
+.hero {
+  width: 100%;
+}
+
+.jumbotron {
+  background-color: #FFC107;
+}
+
+.btn-success {
+  background-color: #FFC107;
+  border: #FFC107;
+  margin-bottom: 0!important;
+  color: #454545;
+}
+
+.btn-success i {
+  color: #454545;
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: rgb(221, 166, 0);
+  border: rgb(221, 166, 0);
+  color: #454545;
+}
+
+.display-message {
+  color: #bbbbbb;
 }

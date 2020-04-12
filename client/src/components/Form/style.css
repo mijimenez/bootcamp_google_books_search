@@ -1,0 +1,40 @@
+form {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 2em;
+}
+
+@media (min-width: 600px) {
+    form {
+        width: 40%;
+    }
+}
+
+form .form-group {
+    margin: 0;
+    width: 100%;
+}
+
+form .form-group input {
+    border-radius: 24px 0 0 24px;
+    width: 100%;
+}
+
+form .btn {
+    border-radius: 0 24px 24px 0;
+}
+
+form .btn i {
+    margin: 0 1em;
+}
+
+/* .btn-success {
+    background-color: #FFC107;
+    border: #FFC107;
+    margin-bottom: 0!important;
+}
+
+.btn-success:hover {
+    background-color: rgb(221, 166, 0);
+    border: rgb(221, 166, 0);
+} */

@@ -6,16 +6,18 @@ function CardBody(props) {
   // console.log(props);
   return (
     <div key={props.id}>
-          <h2>{props.title}</h2>
 
-          { props.authors ? (<h3>{props.authors}</h3>) : ""}
+      <div className="title-author">
+          <h2 className="title">{props.title}</h2>
 
-          { props.image ? (<div><img className="card-img" src={props.image} alt="book thumbnail" /></div>) : "" }
+          { props.authors ? (<h5 className="authors">{props.authors}</h5>) : ""}
+      </div>
+      <div className="image-description">
+          { props.image ? (<div className="image"><img className="card-img" src={props.image} alt="book thumbnail" /></div>) : "" }
 
-          { props.description ? (<p>{props.description}</p>) : ""}
+          { props.description ? (<p className="description">{props.description}</p>) : ""}
+      </div>
 
-          <a className="view-btn btn btn-secondary" href={props.link} target="_blank" tabIndex="0" {...props} style={{ float: "right", marginBottom: 10 }}> View
-          </a>
       </div>
   );
 }

@@ -4,6 +4,8 @@
   border-radius: 4px;
   overflow-y: scroll;
   overflow-x: hidden;
+  max-width: 960px;
+  margin: auto;
 }
 
 .list-overflow-container ul {
@@ -30,4 +32,8 @@
 
 .list-overflow-container li:last-child {
   border-bottom: none;
+}
+
+.list-group-item {
+  padding: 10%;
 }

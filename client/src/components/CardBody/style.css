@@ -1,19 +1,37 @@
-.card {
-  background-size: cover;
-  background-position: center;
-  background-clip: content-box;
-  border: 6px solid white;
-  height: 400px;
-  width: 400px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  position: relative;
-  margin: 0 auto;
-  margin-top: 30px;
+
+.title-author {
+  width: 100%;
+  margin-bottom: 2em;
 }
 
-.card .fa-spinner {
-  font-size: 180px;
-  position: absolute;
-  left: 25%;
-  top: 25%;
+.title {
+  border-left: 8px solid #FFC107;
+  padding-left: .5em;
+}
+
+.authors {
+  padding-left: 1.4em;
+}
+
+@media (min-width: 400px) {
+  .image-description {
+    display: flex;
+  }
+}
+
+.image {
+  margin: 2em 0;
+}
+
+@media (min-width: 400px) {
+  .image-description .image {
+    width: 40%;
+    margin: 0 2em 0 0;
+  }
+}
+
+@media (min-width: 400px) {
+  .image-description .description {
+    width: 100%;
+  }
 }

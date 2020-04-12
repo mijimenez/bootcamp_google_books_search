@@ -7,6 +7,7 @@ import CardBody from "../../components/CardBody";
 import Card from "../../components/Card";
 import { Input, FormBtn } from "../../components/Form";
 import SaveBtn from "../../components/SaveBtn"
+import ViewBtn from "../../components/ViewBtn/ViewBtn";
 
 function Search() {
   // Setting our component's initial state
@@ -28,7 +29,7 @@ function Search() {
   function handleInputChange(event) {
     const { value } = event.target;
     console.log(value);
-    setSearchTerm(value)
+    setSearchTerm( value.replace(/\s/g, '') );
   };
 
   // When the form is submitted, use the API.saveBook method to save the book data
@@ -58,11 +59,12 @@ function Search() {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-12">
+          <div className="hero">
             <Jumbotron>
-              <h1>(React) Google Books Search</h1>
+              <h1>React Google Books Search</h1>
+              <h5>Search For and Save Books of Interest</h5>
             </Jumbotron>
-            <form>
+            <form className="d-flex">
               <Input
                 onChange={handleInputChange}
                 name="title"
@@ -71,39 +73,40 @@ function Search() {
               <FormBtn
                 onClick={handleSearchSubmit}
               >
-                Search
+                <i className="fas fa-search"></i>
               </FormBtn>
             </form>
-          </Col>
+          </div>
           <Col size="md-12">
             <Card>
-              <h2>Results</h2>
+              <h4 className="text-center">Search Results</h4>
               {books.length >0? (
               <List>
                 {books.map(book => (
                   <ListItem key={book.id}>
                       <Card>
+                      <SaveBtn
+                          handleSaveSubmit={handleSaveSubmit}
+                          bookData={book}
+                        >
+                          Save <i className="fas fa-bookmark"></i>
+                        </SaveBtn>
+                        <ViewBtn
+                          link={book.link}
+                        />
                         <CardBody
                           key={book.id}
                           title={book.title}
                           authors={book.authors}
                           image={book.image}
                           description={book.description}
-                          link={book.link}
                         />
-                        <SaveBtn
-                          // onClick={handleSaveSubmit}
-                          handleSaveSubmit={handleSaveSubmit}
-                          bookData={book}
-                        >
-                          Save
-                        </SaveBtn>
                       </Card>
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <p className="display-message text-center mt-5">No Results to Display</p>
             )}
             </Card>
           </Col>
