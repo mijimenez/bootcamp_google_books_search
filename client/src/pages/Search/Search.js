@@ -64,6 +64,8 @@ function Search() {
               <h1>React Google Books Search</h1>
               <h5>Search For and Save Books of Interest</h5>
             </Jumbotron>
+          </div>
+          <Col size="md-12">
             <form className="d-flex">
               <Input
                 onChange={handleInputChange}
@@ -76,7 +78,7 @@ function Search() {
                 <i className="fas fa-search"></i>
               </FormBtn>
             </form>
-          </div>
+          </Col>
           <Col size="md-12">
             <Card>
               <h4 className="text-center">Search Results</h4>

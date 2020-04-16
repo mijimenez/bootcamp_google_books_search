@@ -7,6 +7,7 @@ form {
 @media (min-width: 600px) {
     form {
         width: 40%;
+        max-width: 500px;
     }
 }
 
